@@ -1,39 +1,40 @@
 <h1>Welcome! Please Enter your info in the table below</h1>
-
-<%= form_for @alumni do |f| %>
-    <fieldset>
-     <%= f.label :first_name, "First Name" %>
-     <%= f.text_field :first_name %>
-    </fieldset>
-    <fieldset>
-     <%= f.label :last_name, "Last Name" %>
-     <%= f.text_field :last_name %>
-    </fieldset>
-    <fieldset>
-     <%= f.label :email, "Email" %>
-     <%= f.email_field :email %>
-    </fieldset>
-    <fieldset>
-        <%= f.label :course, "course" %>
-        <%= f.select :course, [['Water engineering'], ['Electrical Engineering'], ['Civil Engineering'], ['Architecture'], ['Mechanical Engineering'], ['Craft']] %>
-    </fieldset>
-    <fieldset>
-        <%= f.label :year_of_study, "Year of Study" %>
-        <%= f.date_field :year_of_study %>
-    </fieldset>
-    <fieldset>
-        <%= f.label :employed, "Are you employed?" %>
-        <%= f.select :employed,[['YES', 1], ['NO', 2]] %>
-    </fieldset>
-    <fieldset>
-     <%= f.label :employer, "Employer" %>
-     <%= f.text_field :employer %>
-    </fieldset>
-    <fieldset>
-     <%= f.label :own_company, "What's name of your company" %>
-     <%= f.text_field :own_company %>
-    </fieldset>
-    <%= f.submit %>
-    
+<div class="mt-3">
+    <%= form_for @alumni do |f| %>
+        <fieldset class="form-group">
+        <%= f.label :first_name, "First Name", class:'form-control' %>
+        <%= f.text_field :first_name, class:'form-control' %>
+        </fieldset>
+        <fieldset class="form-group">
+        <%= f.label :last_name, "Last Name", class:'form-control'%>
+        <%= f.text_field :last_name, class:'form-control'%>
+        </fieldset>
+        <fieldset class="form-group">
+        <%= f.label :email, "Email", class:'form-control'%>
+        <%= f.email_field :email, class:'form-control'%>
+        </fieldset>
+        <fieldset class="form-group">
+            <%= f.label :course, "course", class:'form-control'%>
+            <%= f.select :course, [['Water engineering'], ['Electrical Engineering'], ['Civil Engineering'], ['Architecture'], ['Mechanical Engineering'], ['Craft']], class:'form-control'%>
+        </fieldset>
+        <fieldset class="form-group">
+            <%= f.label :year_of_study, "Year of Study", class:'form-control'%>
+            <%= f.date_field :year_of_study, class:'form-control'%>
+        </fieldset>
+        <fieldset class="form-group">
+            <%= f.label :employed, "Are you employed?", class:'form-control'%>
+            <%= f.select :employed,[['YES', 1], ['NO', 2]], class:'form-control'%>
+        </fieldset>
+        <fieldset class="form-group">
+        <%= f.label :employer, "Employer", class:'form-control'%>
+        <%= f.text_field :employer, class:'form-control'%>
+        </fieldset>
+        <fieldset class="form-group">
+        <%= f.label :own_company, "What's name of your company", class:'form-control'%>
+        <%= f.text_field :own_company, class:'form-control'%>
+        </fieldset>
+        <%= f.submit class:'form-control btn btn-primary' %>
+        
     <% end %>
+</div>
     
