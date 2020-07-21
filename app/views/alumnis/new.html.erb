@@ -1,4 +1,9 @@
 <h1>Welcome! Please Enter your info in the table below</h1>
+<%if @alumni.errors%>
+    <%@alumni.errors.full_messages.each do |error|%>
+        <div class="alert alert-danger "><%=error %></div>
+    <%end%>
+<%end%>
 <div class="mt-3">
     <%= form_for @alumni do |f| %>
         <fieldset class="form-group">
