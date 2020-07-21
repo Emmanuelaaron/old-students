@@ -16,6 +16,10 @@ class AlumnisController < ApplicationController
         @alumni = Alumni.find(params[:id])
     end
 
+    def index
+        @alumnis = Alumni.all
+    end
+
     private
     def alumni_params
         params.require(:alumni).permit(

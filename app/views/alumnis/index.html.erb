@@ -1,0 +1,7 @@
+<h1 class="title mx-auto ">All Alumni</h1>
+
+<div class="m-0">
+  <% @alumnis.each do |alumni| %>
+   <p class="jumbotron p-2 bg-info text-light lead text-center"><%= alumni.first_name %> : <%= alumni.course %>   :  <%= alumni.year_of_study %> </p>
+  <% end %>
+</div>
