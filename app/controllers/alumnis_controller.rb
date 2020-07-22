@@ -30,7 +30,8 @@ class AlumnisController < ApplicationController
             :year_of_study,
             :employed,
             :employer,
-            :own_company
+            :own_company,
+            :phonecontact
         )
     end
 end

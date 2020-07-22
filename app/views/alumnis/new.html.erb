@@ -20,10 +20,15 @@
         </fieldset>
         <fieldset class="form-group">
             <%= f.label :course, "course", class:'form-control'%>
-            <%= f.select :course, [['Water engineering'], ['Electrical Engineering'], ['Civil Engineering'], ['Architecture'], ['Mechanical Engineering'], ['Craft']], class:'form-control'%>
+            <%= f.select :course, [['Diploma in Water engineering'],
+             ['Diploma in Electrical Engineering'], ['Diploma in Civil Engineering'],
+             ['Diploma in Architecture'], ['Diploma in Mechanical Engineering'],
+            ['Certificate in Plumbing'], ['Certificate in Electrical Installation'], 
+            ['Certificate in Building and Concrete Pracrice'], ['Certificate in Motor Vehicle Maintenance']], 
+            class:'form-control'%>
         </fieldset>
         <fieldset class="form-group">
-            <%= f.label :year_of_study, "Year of Study", class:'form-control'%>
+            <%= f.label :year_of_study, "Graduation year", class:'form-control'%>
             <%= f.date_field :year_of_study, class:'form-control'%>
         </fieldset>
         <fieldset class="form-group">
@@ -37,6 +42,9 @@
         <fieldset class="form-group">
         <%= f.label :own_company, "What's name of your company", class:'form-control'%>
         <%= f.text_field :own_company, class:'form-control'%>
+        </fieldset>
+        <%= f.label :phonecontact, "What's your phone contact preferably wattsap", class:'form-control'%>
+        <%= f.text_field :phonecontact, class:'form-control'%>
         </fieldset>
         <%= f.submit class:'form-control btn btn-primary' %>
         

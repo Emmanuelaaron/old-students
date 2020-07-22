@@ -2,6 +2,6 @@
 
 <div class="m-0">
   <% @alumnis.each do |alumni| %>
-   <p class="jumbotron p-2 bg-info text-light lead text-center"><%= alumni.first_name %> : <%= alumni.course %>   :  <%= alumni.year_of_study %> </p>
+   <p class="jumbotron p-2 bg-info text-light lead text-center"><%= alumni.first_name %> : <%= alumni.course %>   :  : <%= alumni.phonecontact %>   ::  <%= alumni.year_of_study.year %> </p>
   <% end %>
 </div>
