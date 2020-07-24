@@ -12,15 +12,18 @@
 
 ActiveRecord::Schema.define(version: 2020_07_22_130505) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "alumnis", force: :cascade do |t|
     t.text "first_name"
     t.text "last_name"
     t.text "email"
     t.text "course"
     t.datetime "year_of_study"
-    t.boolean "employed"
+    t.string "employed"
     t.text "employer"
-    t.boolean "own_company"
+    t.string "own_company"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "phonecontact"
