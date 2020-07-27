@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   get 'alumniss/water', to: "alumnis#water_students"
   get 'alumniss/electrical', to: "alumnis#electrical_students"
   get 'alumniss/mechanical', to: "alumnis#mechanical_students"
+  get 'alumniss/architecture', to: "alumnis#architectural_students"
 end

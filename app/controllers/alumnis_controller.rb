@@ -31,6 +31,10 @@ class AlumnisController < ApplicationController
     def mechanical_students
         @mechanical_students = Alumni.where(course: "Diploma in Mechanical Engineering")
     end
+
+    def architectural_students
+        @architectural_students = Alumni.where(course: "Diploma in Architecture")
+    end
     private
     def alumni_params
         params.require(:alumni).permit(
