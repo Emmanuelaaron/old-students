@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   root to: "alumnis#new"
   get 'alumniss/water', to: "alumnis#water_students"
   get 'alumniss/electrical', to: "alumnis#electrical_students"
+  get 'alumniss/mechanical', to: "alumnis#mechanical_students"
 end
