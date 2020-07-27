@@ -1,7 +1,23 @@
 <h1 class="title mx-auto ">All Alumni</h1>
 
-<div class="m-0">
-  <% @alumnis.each do |alumni| %>
-   <p class="jumbotron p-2 bg-info text-light lead text-center"><%= alumni.first_name %> : <%= alumni.course %>   :  : <%= alumni.phonecontact %>   ::  <%= alumni.year_of_study.year %> </p>
-  <% end %>
-</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Watsap number</th>
+      <th scope="col">email</th>
+    </tr>
+  </thead>
+    <tbody>
+    <% @alumnis.each do |alumni| %>
+        <tr>
+            <td><%= alumni.first_name%> </td>
+            <td><%= alumni.last_name %> </td>
+            <td><%= alumni.phonecontact%> </td>
+            <td><%= alumni.email %> </td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+
