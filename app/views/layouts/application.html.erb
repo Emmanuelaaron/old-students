@@ -18,21 +18,11 @@
     <ul class="navbar-nav ml-auto">
       <%= link_to "Add Alumni", new_alumni_path, class:"nav-link nav-item" %>
       <%= link_to "All Alumni", alumnis_path, class:"nav-link nav-item" %>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Water</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Civil</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link " href="#">Architecture</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link " href="#">Mechanical</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link " href="#">Electrical</a>
-      </li>
+      <%= link_to  "Water", alumniss_water_path, class:"nav-link nav-item" %>
+      <%= link_to  "Civil", alumniss_civil_path, class:"nav-link nav-item" %>
+      <%= link_to  "Architecture", alumniss_architecture_path, class:"nav-link nav-item" %>
+      <%= link_to  "Mechanical", alumniss_mechanical_path, class:"nav-link nav-item" %>
+      <%= link_to  "Electrical", alumniss_electrical_path, class:"nav-link nav-item" %>
       <li class="nav-item">
         <a class="nav-link " href="#">Craft</a>
       </li>
