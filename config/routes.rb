@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get 'alumniss/architecture', to: "alumnis#architectural_students"
   get 'alumniss/civil', to: "alumnis#civil_students"
   get 'alumniss/cert_plumbing', to: "alumnis#cert_plumbing"
+  get 'alumniss/cert_electrical', to: "alumnis#cert_electrical"
 end

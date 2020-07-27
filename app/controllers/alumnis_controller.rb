@@ -43,6 +43,14 @@ class AlumnisController < ApplicationController
     def cert_plumbing
         @cert_plumbing = Alumni.where(course: "Certificate in Plumbing")
     end
+
+    def cert_electrical
+        @cert_electrical = Alumni.where(course: "Certificate in Electrical Installation")
+    end
+
+    # def cert_building
+
+    # end
     private
     def alumni_params
         params.require(:alumni).permit(
