@@ -20,6 +20,10 @@ class AlumnisController < ApplicationController
         @alumnis = Alumni.all
     end
 
+    def water_students
+        @water_students = Alumni.where(course: "Diploma in Water engineering")
+    end
+
     private
     def alumni_params
         params.require(:alumni).permit(
