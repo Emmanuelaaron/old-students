@@ -66,10 +66,10 @@ Rails.application.configure do
     :address              => "smtp.gmail.com",
     :port                 => 587,
     :domain               => "example.com",
-    :user_name            => "alumniutckyema",
-    :password             => "rwwuzlytktppyqdk",
+    :user_name            => ENV["MAIL_USERNAME"],
+    :password             => ENV["MAIL_PASSWORD"],
     :authentication       => "plain",
     :openssl_verify_mode  => 'none'
   }
-  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  config.action_mailer.default_url_options = { host: 'https://utc-kyema-alumni-db.herokuapp.com' }
 end
