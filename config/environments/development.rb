@@ -71,5 +71,5 @@ Rails.application.configure do
     :authentication       => "plain",
     :openssl_verify_mode  => 'none'
   }
-  config.action_mailer.default_url_options = { host: 'https://utc-kyema-alumni-db.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
 end
