@@ -6,6 +6,7 @@ class AlumnisController < ApplicationController
     def create
         @alumni = Alumni.create(alumni_params)
         if @alumni.save
+          AlumniMailer.with(alumni: @alumni).welcome_email.deliver_now
           redirect_to @alumni
         else
           render 'new'
