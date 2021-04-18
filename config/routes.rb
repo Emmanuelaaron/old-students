@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   get 'alumniss/cert_electrical', to: "alumnis#cert_electrical"
   get 'alumniss/cert_building', to: "alumnis#cert_building"
   get 'alumniss/cert_motor_vehicle', to: "alumnis#cert_motor_vehicle"
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
 end
