@@ -51,7 +51,7 @@ test:
   database: alumni_test_db
   pool: 5
   username: postgres
-  password: ""
+  password: "comforter"
   timeout: 5000
 
 production:
