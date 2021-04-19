@@ -1,4 +1,5 @@
 class AlumnisController < ApplicationController
+    before_action :authorized, except: [:new]
     def new
         @alumni = Alumni.new
     end
