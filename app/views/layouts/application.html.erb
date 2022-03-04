@@ -30,23 +30,29 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="blog.html">Blog</a></li>
-          <li class="dropdown"><a href="#"><span>Courses</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><%= link_to  "All Alumni", alumnis_path%></li>
-              <li><%= link_to  "Water", alumniss_water_path%></li>
-              <li><%= link_to  "Civil", alumniss_civil_path%></li>
-              <li><%= link_to  "Architecture", alumniss_architecture_path%></li>
-              <li><%= link_to  "Mechanical", alumniss_mechanical_path%></li>
-              <li> <%= link_to  "Electrical", alumniss_electrical_path%></li>
-              <li><a href="#">Craft</a></li>
-            </ul>
-          </li>
+          <li><a href="#blog">Blog</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Login</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Logout</a></li>
+          <%if current_user%>
+            <li class="dropdown"><a href="#"><span>Courses</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><%= link_to  "All Alumni", alumnis_path%></li>
+                <li><%= link_to  "Water", alumniss_water_path%></li>
+                <li><%= link_to  "Civil", alumniss_civil_path%></li>
+                <li><%= link_to  "Architecture", alumniss_architecture_path%></li>
+                <li><%= link_to  "Mechanical", alumniss_mechanical_path%></li>
+                <li> <%= link_to  "Electrical", alumniss_electrical_path%></li>
+                <li><a href="#">Craft</a></li>
+              </ul>
+            </li>
+            <li><%= link_to 'Logout', logout_path, class:'nav-link scrollto'%></li>
+          <%end%>
+           <%if current_user.nil?%>
+            <li><%= link_to 'Admin Login', login_path, class:'nav-link scrollto'%></li>
+          <%end%>
         </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
+        <span class="mobile-nav-toggle bg-dark">
+          <%=content_tag(:li, fa_icon("solid bars"))%>
+        </span>
       </nav><!-- .navbar -->
 
     </div>
@@ -55,6 +61,7 @@
   
     <main id="main">
       <%= yield %>
+      <%= javascript_pack_tag 'rails' %>
     </main>
   </body>
 </html>
