@@ -60,7 +60,7 @@ class AlumnisController < ApplicationController
   private
 
   def alumni_params
-    params.require(:alumni).permit(
+    params['alumni'].permit(
       :first_name,
       :last_name,
       :email,
