@@ -48,9 +48,10 @@ class AlumnisController < ApplicationController
     @alumni = Alumni.create(alumni_params)
     if @alumni.save
       AlumniMailer.with(alumni: @alumni).welcome_email.deliver_now
-      redirect_to @alumni
+      redirect_to root_path, notice: 'Alumni Added to the DataBase'
     else
-      render 'new'
+      error = @alumni.errors.messages
+      redirect_to new_alumni_path, alert: "#{error.keys[0]} #{error.values[0][0]}!"
     end
   end
 
