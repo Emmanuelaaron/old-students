@@ -10,28 +10,76 @@
   </head>
 
   <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand text-light lead" href="#">UTC-Kyema Alumni-Database</a>
-  
-  <div class="collapse navbar-collapse " id="navbarSupportedContent">
+    <div id="topbar" class="fixed-top d-flex align-items-center ">
+      <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
+        <div class="contact-info d-flex align-items-center">
+          <i class="bi bi-envelope-fill"></i><a href="mailto:contact@example.com">alumniutckyema@gmail.com</a>
+          <i class="bi bi-phone-fill phone-icon"></i> +256 7059 2471 7
+        </div>
+        <div class="cta d-none d-md-block">
+          <%= link_to  "Add Alumni", new_alumni_path%></li>
+        </div>
+      </div>
+    </div>
+    <header id="header" class="fixed-top d-flex align-items-center ">
+    <div class="container d-flex align-items-center justify-content-between">
 
-    <ul class="navbar-nav ml-auto">
-      <%= link_to "Add Alumni", new_alumni_path, class:"nav-link nav-item" %>
-      <%= link_to "All Alumni", alumnis_path, class:"nav-link nav-item" %>
-      <%= link_to  "Water", alumniss_water_path, class:"nav-link nav-item" %>
-      <%= link_to  "Civil", alumniss_civil_path, class:"nav-link nav-item" %>
-      <%= link_to  "Architecture", alumniss_architecture_path, class:"nav-link nav-item" %>
-      <%= link_to  "Mechanical", alumniss_mechanical_path, class:"nav-link nav-item" %>
-      <%= link_to  "Electrical", alumniss_electrical_path, class:"nav-link nav-item" %>
-      <li class="nav-item">
-        <a class="nav-link " href="#">Craft</a>
-      </li>
-    </ul>
-    
-  </div>
-</nav>
-<div class="container mb-5"> 
-  <%= yield %>
-</div>
+      <h1 class="logo"><%= link_to  "AUTCK", root_path%></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href=index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <%if current_user%>
+            <li class="dropdown"><a href="#"><span>Courses</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><%= link_to  "All Alumni", alumnis_path%></li>
+                <li><%= link_to  "Water", alumniss_water_path%></li>
+                <li><%= link_to  "Civil", alumniss_civil_path%></li>
+                <li><%= link_to  "Architecture", alumniss_architecture_path%></li>
+                <li><%= link_to  "Mechanical", alumniss_mechanical_path%></li>
+                <li> <%= link_to  "Electrical", alumniss_electrical_path%></li>
+                <li class="dropdown"><a href="#"><span>Certificate Courses</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><%= link_to  "Plumbing", alumniss_cert_plumbing_path%></li>
+                  <li><%= link_to  "Electrical Installation", alumniss_cert_electrical_path%></li>
+                  <li><%= link_to  "Building & Concrete Practice", alumniss_cert_building_path%></li>
+                  <li><%= link_to  "Motor Vehicle Maintenance", alumniss_cert_motor_vehicle_path%></li>
+                </ul>
+              </li>
+              </ul>
+            </li>
+          <%end%>
+          <li><a href="#blog">Blog</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+           <%if current_user.nil?%>
+            <li><%= link_to 'Admin Login', login_path, class:'nav-link scrollto'%></li>
+          <%else%>
+            <li><%= link_to 'Logout', logout_path, class:'nav-link scrollto'%></li>
+          <%end%>
+        </ul>
+        <span class="mobile-nav-toggle">
+          <%=content_tag(:i, fa_icon("solid bars"))%>
+        </span>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header>
+
+  
+    <main id="main">
+      <%= yield %>
+      <%= javascript_pack_tag 'rails' %>
+    </main>
+    <footer id="footer" class="text-center">
+      <div class="container">
+        <div class="copyright">
+          &copy; Copyright <strong><span>AUTCK Database</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+          Designed by <a href="https://isabirye.netlify.app/" target="_blank">Emmanuel</a>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

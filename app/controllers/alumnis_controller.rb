@@ -1,73 +1,157 @@
 class AlumnisController < ApplicationController
-    def new
-        @alumni = Alumni.new
-    end
+  before_action :authenticate_user!, except: %i[new create welcome]
+  def welcome
+    @summaries = {}
 
-    def create
-        @alumni = Alumni.create(alumni_params)
-        if @alumni.save
-          AlumniMailer.with(alumni: @alumni).welcome_email.deliver_now
-          redirect_to @alumni
-        else
-          render 'new'
-        end
-    end
+    @summaries['Diploma in Electrical Engineering'] = {}
+    @summaries['Diploma in Electrical Engineering']['total'] = Alumni.dip_in_electrical.count
+    @summaries['Diploma in Electrical Engineering']['link'] = alumniss_electrical_path
 
-    def show
-        @alumni = Alumni.find(params[:id])
-    end
+    @summaries['Diploma in Water Engineering'] = {}
+    @summaries['Diploma in Water Engineering']['total'] = Alumni.dip_in_water.count
+    @summaries['Diploma in Water Engineering']['link'] = alumniss_water_path
 
-    def index
-        @alumnis = Alumni.all
-    end
+    @summaries['Diploma in Mechanical Engineering'] = {}
+    @summaries['Diploma in Mechanical Engineering']['total'] = Alumni.dip_in_mechanical.count
+    @summaries['Diploma in Mechanical Engineering']['link'] = alumniss_mechanical_path
 
-    def water_students
-        @water_students = Alumni.where(course: "Diploma in Water engineering")
-    end
+    @summaries['Diploma in Architecture'] = {}
+    @summaries['Diploma in Architecture']['total'] = Alumni.dip_in_architecture.count
+    @summaries['Diploma in Architecture']['link'] = alumniss_architecture_path
 
-    def electrical_students
-        @electrical_students = Alumni.where(course: "Diploma in Electrical Engineering")
-    end
+    @summaries['Diploma in Civil Engineering'] = {}
+    @summaries['Diploma in Civil Engineering']['total'] = Alumni.dip_in_civil.count
+    @summaries['Diploma in Civil Engineering']['link'] = alumniss_civil_path
 
-    def mechanical_students
-        @mechanical_students = Alumni.where(course: "Diploma in Mechanical Engineering")
-    end
+    @summaries['Certificate in Plumbing'] = {}
+    @summaries['Certificate in Plumbing']['total'] = Alumni.cert_in_plumbing.count
+    @summaries['Certificate in Plumbing']['link'] = alumniss_cert_plumbing_path
 
-    def architectural_students
-        @architectural_students = Alumni.where(course: "Diploma in Architecture")
-    end
+    @summaries['Certificate in Electrical Installation'] = {}
+    @summaries['Certificate in Electrical Installation']['total'] = Alumni.cert_in_electrical.count
+    @summaries['Certificate in Electrical Installation']['link'] = alumniss_cert_electrical_path
 
-    def civil_students
-        @civil_students = Alumni.where(course: "Diploma in Civil Engineering")
-    end
+    @summaries['Certificate in Building and Concrete Practice'] = {}
+    @summaries['Certificate in Building and Concrete Practice']['total'] = Alumni.cert_building.count
+    @summaries['Certificate in Building and Concrete Practice']['link'] = alumniss_cert_building_path
 
-    def cert_plumbing
-        @cert_plumbing = Alumni.where(course: "Certificate in Plumbing")
-    end
+    @summaries['Certificate in Motor Vehicle Maintenance'] = {}
+    @summaries['Certificate in Motor Vehicle Maintenance']['total'] = Alumni.cert_motor_vehicle.count
+    @summaries['Certificate in Motor Vehicle Maintenance']['link']= alumniss_cert_motor_vehicle_path
+  end
 
-    def cert_electrical
-        @cert_electrical = Alumni.where(course: "Certificate in Electrical Installation")
-    end
+  def new
+    @alumni = Alumni.new
+  end
 
-    def cert_building
-        @cert_building = Alumni.where(course: "Certificate in Building and Concrete Practice")
+  def create
+    @alumni = Alumni.create(alumni_params)
+    if @alumni.save
+      AlumniMailer.with(alumni: @alumni).welcome_email.deliver_now
+      redirect_to root_path, notice: 'Alumni Added to the DataBase'
+    else
+      error = @alumni.errors.messages
+      redirect_to new_alumni_path, alert: "#{error.keys[0]} #{error.values[0][0]}!"
     end
+  end
 
-    def cert_motor_vehicle
-        @cert_motor_vehicle = Alumni.where(course: "Certificate in Motor Vehicle Maintenance")
+  def show
+    @alumni = Alumni.find(params[:id])
+  end
+
+  def index
+    @alumnis = Alumni.all
+    respond_to do |format|
+      format.html
+      format.xlsx
     end
-    private
-    def alumni_params
-        params.require(:alumni).permit(
-            :first_name, 
-            :last_name, 
-            :email,
-            :course,
-            :year_of_study,
-            :employed,
-            :employer,
-            :own_company,
-            :phonecontact
-        )
+  end
+
+  def water_students
+    @water_students = Alumni.dip_in_water
+    respond_to do |format|
+      format.html
+      format.xlsx
     end
+  end
+
+  def electrical_students
+    @electrical_students = Alumni.dip_in_electrical
+    respond_to do |format|
+      format.html
+      format.xlsx
+    end
+  end
+
+  def mechanical_students
+    @mechanical_students = Alumni.dip_in_mechanical
+    respond_to do |format|
+      format.html
+      format.xlsx
+    end
+  end
+
+  def architectural_students
+    @architectural_students = Alumni.dip_in_architecture
+    respond_to do |format|
+      format.html
+      format.xlsx
+    end
+  end
+
+  def civil_students
+    @civil_students = Alumni.dip_in_civil
+    respond_to do |format|
+      format.html
+      format.xlsx
+    end
+  end
+
+  def cert_plumbing
+    @cert_plumbing = Alumni.cert_in_plumbing
+    respond_to do |format|
+      format.html
+      format.xlsx
+    end
+  end
+
+  def cert_electrical
+    @cert_electrical = Alumni.cert_in_electrical
+    respond_to do |format|
+      format.html
+      format.xlsx
+    end
+  end
+
+  def cert_building
+    @cert_building = Alumni.cert_building
+    respond_to do |format|
+      format.html
+      format.xlsx
+    end
+  end
+
+  def cert_motor_vehicle
+    @cert_motor_vehicle = Alumni.cert_motor_vehicle
+    respond_to do |format|
+      format.html
+      format.xlsx
+    end
+  end
+
+  private
+
+  def alumni_params
+    params['alumni'].permit(
+      :first_name,
+      :last_name,
+      :email,
+      :course,
+      :year_of_study,
+      :employed,
+      :employer,
+      :own_company,
+      :phonecontact
+    )
+  end
 end
