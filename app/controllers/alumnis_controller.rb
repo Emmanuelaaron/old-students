@@ -61,42 +61,82 @@ class AlumnisController < ApplicationController
 
   def index
     @alumnis = Alumni.all
+    respond_to do |format|
+      format.html
+      format.xlsx
+    end
   end
 
   def water_students
     @water_students = Alumni.dip_in_water
+    respond_to do |format|
+      format.html
+      format.xlsx
+    end
   end
 
   def electrical_students
     @electrical_students = Alumni.dip_in_electrical
+    respond_to do |format|
+      format.html
+      format.xlsx
+    end
   end
 
   def mechanical_students
     @mechanical_students = Alumni.dip_in_mechanical
+    respond_to do |format|
+      format.html
+      format.xlsx
+    end
   end
 
   def architectural_students
     @architectural_students = Alumni.dip_in_architecture
+    respond_to do |format|
+      format.html
+      format.xlsx
+    end
   end
 
   def civil_students
     @civil_students = Alumni.dip_in_civil
+    respond_to do |format|
+      format.html
+      format.xlsx
+    end
   end
 
   def cert_plumbing
     @cert_plumbing = Alumni.cert_in_plumbing
+    respond_to do |format|
+      format.html
+      format.xlsx
+    end
   end
 
   def cert_electrical
     @cert_electrical = Alumni.cert_in_electrical
+    respond_to do |format|
+      format.html
+      format.xlsx
+    end
   end
 
   def cert_building
     @cert_building = Alumni.cert_building
+    respond_to do |format|
+      format.html
+      format.xlsx
+    end
   end
 
   def cert_motor_vehicle
     @cert_motor_vehicle = Alumni.cert_motor_vehicle
+    respond_to do |format|
+      format.html
+      format.xlsx
+    end
   end
 
   private

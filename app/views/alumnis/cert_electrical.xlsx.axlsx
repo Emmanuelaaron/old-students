@@ -1,0 +1,11 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: 'Items') do |sheet|
+  # Create the header row
+  sheet.add_row ['First Name', 'Last Name', 'Contact', 'Email', 'Company', 'Owned Company']
+  # Create entries for each item
+  @cert_electrical.each do |member|
+    sheet.add_row [member.first_name, member.last_name, member.phonecontact, member.email,
+                   member.employer, member.own_company]
+  end
+end
