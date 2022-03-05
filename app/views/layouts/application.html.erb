@@ -30,8 +30,6 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="#blog">Blog</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
           <%if current_user%>
             <li class="dropdown"><a href="#"><span>Courses</span> <i class="bi bi-chevron-down"></i></a>
               <ul>
@@ -41,13 +39,23 @@
                 <li><%= link_to  "Architecture", alumniss_architecture_path%></li>
                 <li><%= link_to  "Mechanical", alumniss_mechanical_path%></li>
                 <li> <%= link_to  "Electrical", alumniss_electrical_path%></li>
-                <li><a href="#">Craft</a></li>
+                <li class="dropdown"><a href="#"><span>Certificate Courses</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><%= link_to  "Plumbing", alumniss_cert_plumbing_path%></li>
+                  <li><%= link_to  "Electrical Installation", alumniss_cert_electrical_path%></li>
+                  <li><%= link_to  "Building & Concrete Practice", alumniss_cert_building_path%></li>
+                  <li><%= link_to  "Motor Vehicle Maintenance", alumniss_cert_motor_vehicle_path%></li>
+                </ul>
+              </li>
               </ul>
             </li>
-            <li><%= link_to 'Logout', logout_path, class:'nav-link scrollto'%></li>
           <%end%>
+          <li><a href="#blog">Blog</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
            <%if current_user.nil?%>
             <li><%= link_to 'Admin Login', login_path, class:'nav-link scrollto'%></li>
+          <%else%>
+            <li><%= link_to 'Logout', logout_path, class:'nav-link scrollto'%></li>
           <%end%>
         </ul>
         <span class="mobile-nav-toggle bg-dark">
