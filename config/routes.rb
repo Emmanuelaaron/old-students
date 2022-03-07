@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root to: "alumnis#welcome"
   get '/login', to: "sessions#new"
   post '/login', to: 'sessions#create'
+  get '/newsletter', to: 'newsletters#new'
+  post '/newsletter', to: 'newsletters#send_newsletter'
   get '/logout', to: 'sessions#destroy'
   get 'alumniss/water', to: "alumnis#water_students"
   get 'alumniss/electrical', to: "alumnis#electrical_students"

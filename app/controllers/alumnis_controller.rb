@@ -37,7 +37,7 @@ class AlumnisController < ApplicationController
 
     @summaries['Certificate in Motor Vehicle Maintenance'] = {}
     @summaries['Certificate in Motor Vehicle Maintenance']['total'] = Alumni.cert_motor_vehicle.count
-    @summaries['Certificate in Motor Vehicle Maintenance']['link']= alumniss_cert_motor_vehicle_path
+    @summaries['Certificate in Motor Vehicle Maintenance']['link'] = alumniss_cert_motor_vehicle_path
   end
 
   def new

@@ -1,0 +1,27 @@
+<section id="contact" class="contac">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-tite text-light text-center">
+          <h2>Send Newsletter to all Alumni</h2>
+          <p class="notice text-success bg-light"><%= notice %></p>
+        </div>
+
+        <div class="row mt-1 d-flex justify-content-center" data-aos="fade-right" data-aos-delay="100">
+
+
+          <div class="col-lg-8 mt-5 mt-lg-0" data-aos="fade-left" data-aos-delay="100">
+            <%= form_for(:newsletter, url: newsletter_path, html: {class: "php-email-form"}) do |f| %>
+              <div class="form-group mt-3">
+                <%= f.text_field :subject, class: 'form-control', placeholder: 'Subject', :required => true%>
+              </div>
+              <div class="form-group mt-3">
+                <%= f.text_area :message, class:"form-control", :rows => "10", placeholder: "Message", :required => true%>
+              </div>
+              <div class="text-center"><button type="submit" class="newsletter-btn mt-3">Send</button></div>
+            <%end%>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
